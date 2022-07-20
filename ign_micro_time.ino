@@ -2,64 +2,6 @@
 #define FRONTS_PER_ROTATE 1 // Количество прохождений шторки через датчик за 1 оборот
 #define Modul_Size 600  // Размер активного элемента
 
-// тут выставляем таблицы опережения углы * 10.
-// таблица саруман опозит (Одиночка)нагрузка 0-20    колличество микросекунд за одни оборот делим на 3600 и умножаем на угол опережения , так как углы в 10-х долях градусов потому и делим на 3600
-#define ANGLE_0_700 (RPM_MIC_700 / 3600 * 10)
-#define ANGLE_0_1000 (RPM_MIC_1000 / 3600 * 65)
-#define ANGLE_0_1250 (RPM_MIC_1250 / 3600 * 129)
-#define ANGLE_0_1500 (RPM_MIC_1500 / 3600 * 183)
-#define ANGLE_0_1750 (RPM_MIC_1750 / 3600 * 237)
-#define ANGLE_0_2000 (RPM_MIC_2000 / 3600 * 282)
-#define ANGLE_0_2250 (RPM_MIC_2250 / 3600 * 317)
-#define ANGLE_0_2500 (RPM_MIC_2500 / 3600 * 347)
-#define ANGLE_0_2750 (RPM_MIC_2750 / 3600 * 373)
-#define ANGLE_0_3000 (RPM_MIC_3000 / 3600 * 393)
-#define ANGLE_0_3250 (RPM_MIC_3250 / 3600 * 412)
-#define ANGLE_0_3500 (RPM_MIC_3500 / 3600 * 426)
-#define ANGLE_0_3750 (RPM_MIC_3750 / 3600 * 435)
-#define ANGLE_0_4000 (RPM_MIC_4000 / 3600 * 439)
-#define ANGLE_0_4250 (RPM_MIC_4250 / 3600 * 441)
-#define ANGLE_0_4500 (RPM_MIC_4500 / 3600 * 444)
-#define ANGLE_0_4750 (RPM_MIC_4750 / 3600 * 447)
-#define ANGLE_0_5000 (RPM_MIC_5000 / 3600 * 450)
-#define ANGLE_0_5250 (RPM_MIC_5250 / 3600 * 450)
-#define ANGLE_0_5500 (RPM_MIC_5500 / 3600 * 450)
-#define ANGLE_0_5750 (RPM_MIC_5750 / 3600 * 450)
-#define ANGLE_0_6000 (RPM_MIC_6000 / 3600 * 450)
-#define ANGLE_0_6250 (RPM_MIC_6250 / 3600 * 445)
-#define ANGLE_0_6500 (RPM_MIC_6500 / 3600 * 440)
-#define ANGLE_0_6750 (RPM_MIC_6750 / 3600 * 430)
-#define ANGLE_0_7000 (RPM_MIC_7000 / 3600 * 420)
-
-// таблица саруман опозит (колясыч)нагрузка 80-100 , график занижен до 2500 на 160 далее постепенное уменьшение занижения до 130 , чтоб при половини открытого газа под нагрузкой были около 0- е значения (занижение от грфика 0), избегаем детонации.
-#define  ANGLE_4_700 (RPM_MIC_700 / 3600 * -150)
-#define ANGLE_4_1000  (RPM_MIC_1000 / 3600 * -95)
-#define ANGLE_4_1250  (RPM_MIC_1250 / 3600 * -31)
-#define ANGLE_4_1500  (RPM_MIC_1500 / 3600 * 23)
-#define ANGLE_4_1750  (RPM_MIC_1750 / 3600 * 77)
-#define ANGLE_4_2000  (RPM_MIC_2000 / 3600 * 122)
-#define ANGLE_4_2250  (RPM_MIC_2250 / 3600 * 157)
-#define ANGLE_4_2500  (RPM_MIC_2500 / 3600 * 187)
-#define ANGLE_4_2750  (RPM_MIC_2750 / 3600 * 213)
-#define ANGLE_4_3000  (RPM_MIC_3000 / 3600 * 233)
-#define ANGLE_4_3250  (RPM_MIC_3250 / 3600 * 252)
-#define ANGLE_4_3500  (RPM_MIC_3500 / 3600 * 276)
-#define ANGLE_4_3750  (RPM_MIC_3750 / 3600 * 295)
-#define ANGLE_4_4000  (RPM_MIC_4000 / 3600 * 309)
-#define ANGLE_4_4250  (RPM_MIC_4250 / 3600 * 321)
-#define ANGLE_4_4500  (RPM_MIC_4500 / 3600 * 324)
-#define ANGLE_4_4750  (RPM_MIC_4750 / 3600 * 327)
-#define ANGLE_4_5000  (RPM_MIC_5000 / 3600 * 330)
-#define ANGLE_4_5250  (RPM_MIC_5250 / 3600 * 330)
-#define ANGLE_4_5500  (RPM_MIC_5500 / 3600 * 330)
-#define ANGLE_4_5750  (RPM_MIC_5750 / 3600 * 330)
-#define ANGLE_4_6000  (RPM_MIC_6000 / 3600 * 330)
-#define ANGLE_4_6250  (RPM_MIC_6250 / 3600 * 325)
-#define ANGLE_4_6500  (RPM_MIC_6500 / 3600 * 320)
-#define ANGLE_4_6750  (RPM_MIC_6750 / 3600 * 310)
-#define ANGLE_4_7000  (RPM_MIC_7000 / 3600 * 300)
-
-
 
 #define MICROS_IN_MINUTE 60000000UL // Количество микросекунд в минуте
 #define TIME_FOR_RPM_COUNT (MICROS_IN_MINUTE / FRONTS_PER_ROTATE) // определяем коэффициент для расчёта скорости вращения в зависимости от количества импульсов на оборот
@@ -121,6 +63,65 @@
 #define RPM_MIC_6500 (TIME_FOR_RPM_COUNT / RPM_6500)
 #define RPM_MIC_6750 (TIME_FOR_RPM_COUNT / RPM_6750)
 #define RPM_MIC_7000 (TIME_FOR_RPM_COUNT / RPM_7000)
+
+// тут выставляем таблицы опережения углы * 10.
+// таблица саруман опозит (Одиночка)нагрузка 0-20    колличество микросекунд за одни оборот делим на 3600 и умножаем на угол опережения , так как углы в 10-х долях градусов потому и делим на 3600
+#define ANGLE_0_700 (RPM_MIC_700 / DEC_DEGREES * 10)
+#define ANGLE_0_1000 (RPM_MIC_1000 / DEC_DEGREES * 65)
+#define ANGLE_0_1250 (RPM_MIC_1250 / DEC_DEGREES * 129)
+#define ANGLE_0_1500 (RPM_MIC_1500 / DEC_DEGREES * 183)
+#define ANGLE_0_1750 (RPM_MIC_1750 / DEC_DEGREES * 237)
+#define ANGLE_0_2000 (RPM_MIC_2000 / DEC_DEGREES * 282)
+#define ANGLE_0_2250 (RPM_MIC_2250 / DEC_DEGREES * 317)
+#define ANGLE_0_2500 (RPM_MIC_2500 / DEC_DEGREES * 347)
+#define ANGLE_0_2750 (RPM_MIC_2750 / DEC_DEGREES * 373)
+#define ANGLE_0_3000 (RPM_MIC_3000 / DEC_DEGREES * 393)
+#define ANGLE_0_3250 (RPM_MIC_3250 / DEC_DEGREES * 412)
+#define ANGLE_0_3500 (RPM_MIC_3500 / DEC_DEGREES * 426)
+#define ANGLE_0_3750 (RPM_MIC_3750 / DEC_DEGREES * 435)
+#define ANGLE_0_4000 (RPM_MIC_4000 / DEC_DEGREES * 439)
+#define ANGLE_0_4250 (RPM_MIC_4250 / DEC_DEGREES * 441)
+#define ANGLE_0_4500 (RPM_MIC_4500 / DEC_DEGREES * 444)
+#define ANGLE_0_4750 (RPM_MIC_4750 / DEC_DEGREES * 447)
+#define ANGLE_0_5000 (RPM_MIC_5000 / DEC_DEGREES * 450)
+#define ANGLE_0_5250 (RPM_MIC_5250 / DEC_DEGREES * 450)
+#define ANGLE_0_5500 (RPM_MIC_5500 / DEC_DEGREES * 450)
+#define ANGLE_0_5750 (RPM_MIC_5750 / DEC_DEGREES * 450)
+#define ANGLE_0_6000 (RPM_MIC_6000 / DEC_DEGREES * 450)
+#define ANGLE_0_6250 (RPM_MIC_6250 / DEC_DEGREES * 445)
+#define ANGLE_0_6500 (RPM_MIC_6500 / DEC_DEGREES * 440)
+#define ANGLE_0_6750 (RPM_MIC_6750 / DEC_DEGREES * 430)
+#define ANGLE_0_7000 (RPM_MIC_7000 / DEC_DEGREES * 420)
+
+// таблица саруман опозит (колясыч)нагрузка 80-100 , график занижен до 2500 на 160 далее постепенное уменьшение занижения до 130 , чтоб при половини открытого газа под нагрузкой были около 0- е значения (занижение от грфика 0), избегаем детонации.
+#define  ANGLE_4_700 (RPM_MIC_700 / DEC_DEGREES * -150)
+#define ANGLE_4_1000  (RPM_MIC_1000 / DEC_DEGREES * -95)
+#define ANGLE_4_1250  (RPM_MIC_1250 / DEC_DEGREES * -31)
+#define ANGLE_4_1500  (RPM_MIC_1500 / DEC_DEGREES * 23)
+#define ANGLE_4_1750  (RPM_MIC_1750 / DEC_DEGREES * 77)
+#define ANGLE_4_2000  (RPM_MIC_2000 / DEC_DEGREES * 122)
+#define ANGLE_4_2250  (RPM_MIC_2250 / DEC_DEGREES * 157)
+#define ANGLE_4_2500  (RPM_MIC_2500 / DEC_DEGREES * 187)
+#define ANGLE_4_2750  (RPM_MIC_2750 / DEC_DEGREES * 213)
+#define ANGLE_4_3000  (RPM_MIC_3000 / DEC_DEGREES * 233)
+#define ANGLE_4_3250  (RPM_MIC_3250 / DEC_DEGREES * 252)
+#define ANGLE_4_3500  (RPM_MIC_3500 / DEC_DEGREES * 276)
+#define ANGLE_4_3750  (RPM_MIC_3750 / DEC_DEGREES * 295)
+#define ANGLE_4_4000  (RPM_MIC_4000 / DEC_DEGREES * 309)
+#define ANGLE_4_4250  (RPM_MIC_4250 / DEC_DEGREES * 321)
+#define ANGLE_4_4500  (RPM_MIC_4500 / DEC_DEGREES * 324)
+#define ANGLE_4_4750  (RPM_MIC_4750 / DEC_DEGREES * 327)
+#define ANGLE_4_5000  (RPM_MIC_5000 / DEC_DEGREES * 330)
+#define ANGLE_4_5250  (RPM_MIC_5250 / DEC_DEGREES * 330)
+#define ANGLE_4_5500  (RPM_MIC_5500 / DEC_DEGREES * 330)
+#define ANGLE_4_5750  (RPM_MIC_5750 / DEC_DEGREES * 330)
+#define ANGLE_4_6000  (RPM_MIC_6000 / DEC_DEGREES * 330)
+#define ANGLE_4_6250  (RPM_MIC_6250 / DEC_DEGREES * 325)
+#define ANGLE_4_6500  (RPM_MIC_6500 / DEC_DEGREES * 320)
+#define ANGLE_4_6750  (RPM_MIC_6750 / DEC_DEGREES * 310)
+#define ANGLE_4_7000  (RPM_MIC_7000 / DEC_DEGREES * 300)
+
+
 
 // назначаем переменные
 
@@ -186,7 +187,7 @@ void setup()
 void readrpm()  // расчитываем обороты.
 {
   
-  rpm = VMTtime - oldtime;  // так как мы считаем все в микросекундах и ушли от градусов и оборотов , то для удобства , чтоб не переписывать программу , просто приравниваю переменную оборотов в времени вмт.
+  rpm = VMTtime - oldtime;  // так как мы считаем все в микросекундах и ушли от градусов и оборотов , то для удобства , чтоб не переписывать программу , просто приравниваю в переменную оборотов время одного оборота в микросекундах (diftime).
   oldtime = VMTtime;
   MapTime = VMTtime + rpm / 4; // вычисляем время середены такта впуска.
   MapReadFlag = true;
@@ -443,8 +444,8 @@ void countIgnitionTime() { // Функция расчета времени сд�
 
 
   else { // если модулятор не изменился
-      if (startloop <= 1) { // Пока идет первый оборот двигателя
-      startloop = startloop + 1 ;    //устанасливаем счетчик в  переменную первого полного оборота двигателя от втм
+      if (micros() < VMTtime) { // проверяем на переполнение переменной micros()
+      startloop = 0 ;    //устанасливаем значение переменной первого запуска на стартовый цикл, тем самым приводим показания всех временных переменных к корректному значению.
         return;    
     }
 
@@ -456,4 +457,3 @@ void countIgnitionTime() { // Функция расчета времени сд�
 
 
  }
-
