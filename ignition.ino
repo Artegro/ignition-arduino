@@ -230,7 +230,7 @@ int  ANGLE_6250 = ANGLE_2_6250 ;
 int  ANGLE_6500 = ANGLE_2_6500 ;
 int  ANGLE_6750 = ANGLE_2_6750 ;
 int  ANGLE_7000 = ANGLE_2_7000;
-//unsigned long newtime;
+unsigned long testtime;
 unsigned long loadtime;         // Переменная для расчёта времени впуска.
 unsigned long oldtime;         // Переменная для расчёта RPM.
 unsigned long diffTime;        // Переменная для расчёта RPM.
@@ -279,9 +279,9 @@ void MapRead() {  // Функция обработки МАР датчика и 
       if  (Map < MapMin) {
         MapMin = Map;
       }
-      if (Map > MapMax) {
-        MapMax = Map;
-      }
+//      if (Map > MapMax) {
+//        MapMax = Map;
+//      }
       MapOld = Map;
       // int deltaMap5 = MapMax - MapMin;
       // Включено линейное изменение угла от нагрузки между 2-мя  графиками ANGLE_0 и ANGLE_4
@@ -512,7 +512,8 @@ void loop() {
     if (startloop <= 1) { // Пока идет первый оборот двигателя
       startloop = startloop + 1 ;    //устанасливаем счетчик в  переменную первого полного оборота двигателя от втм
     }
-    if (micros() < VMTtime){ // Защита при переполнении счетчика микрос
+    testtime = micros();
+    if (testtime < oldtime){ // Защита при переполнении счетчика микрос
       startloop = 0;
     }
 
@@ -520,12 +521,14 @@ void loop() {
 
 
   else { // если модулятор не изменился
-    if (micros() < VMTtime){ // Защита при переполнении счетчика микрос
+    testtime = micros();
+    if (testtime < oldtime){ // Защита при переполнении счетчика микрос
       startloop = 0;
       return;
     }
-    if (micros() > (VMTtime + 1000000)) { //Отключение катушки если более 1секунд простоя
+    if (testtime > (oldtime + 1000000)) { //Отключение катушки если более 0.1секунд простоя
       PORTB |= (1 << 1);  //Подаем высокий уровень на Р1 отключаем катушку
+      startloop = 0;
     }
   }// если модулятор не изменился
 
