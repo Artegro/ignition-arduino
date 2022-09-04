@@ -204,32 +204,32 @@
 #define RPM_7000 7000
 
 //переменные угла опережения
-int  ANGLE_700 = ANGLE_2_700;
-int  ANGLE_1000 = ANGLE_2_1000 ;
-int  ANGLE_1250 = ANGLE_2_1250 ;
-int  ANGLE_1500 = ANGLE_2_1500 ;
-int  ANGLE_1750 = ANGLE_2_1750 ;
-int  ANGLE_2000 = ANGLE_2_2000 ;
-int  ANGLE_2250 = ANGLE_2_2250 ;
-int  ANGLE_2500 = ANGLE_2_2500 ;
-int  ANGLE_2750 = ANGLE_2_2750 ;
-int  ANGLE_3000 = ANGLE_2_3000 ;
-int  ANGLE_3250 = ANGLE_2_3250 ;
-int  ANGLE_3500 = ANGLE_2_3500 ;
-int  ANGLE_3750 = ANGLE_2_3750 ;
-int  ANGLE_4000 = ANGLE_2_4000 ;
-int  ANGLE_4250 = ANGLE_2_4250 ;
-int  ANGLE_4500 = ANGLE_2_4500 ;
-int  ANGLE_4750 = ANGLE_2_4750 ;
-int  ANGLE_5000 = ANGLE_2_5000 ;
-int  ANGLE_5250 = ANGLE_2_5250 ;
-int  ANGLE_5500 = ANGLE_2_5500 ;
-int  ANGLE_5750 = ANGLE_2_5750 ;
-int  ANGLE_6000 = ANGLE_2_6000 ;
-int  ANGLE_6250 = ANGLE_2_6250 ;
-int  ANGLE_6500 = ANGLE_2_6500 ;
-int  ANGLE_6750 = ANGLE_2_6750 ;
-int  ANGLE_7000 = ANGLE_2_7000;
+int  ANGLE_700 = ANGLE_4_700;
+int  ANGLE_1000 = ANGLE_4_1000 ;
+int  ANGLE_1250 = ANGLE_4_1250 ;
+int  ANGLE_1500 = ANGLE_4_1500 ;
+int  ANGLE_1750 = ANGLE_4_1750 ;
+int  ANGLE_2000 = ANGLE_4_2000 ;
+int  ANGLE_2250 = ANGLE_4_2250 ;
+int  ANGLE_2500 = ANGLE_4_2500 ;
+int  ANGLE_2750 = ANGLE_4_2750 ;
+int  ANGLE_3000 = ANGLE_4_3000 ;
+int  ANGLE_3250 = ANGLE_4_3250 ;
+int  ANGLE_3500 = ANGLE_4_3500 ;
+int  ANGLE_3750 = ANGLE_4_3750 ;
+int  ANGLE_4000 = ANGLE_4_4000 ;
+int  ANGLE_4250 = ANGLE_4_4250 ;
+int  ANGLE_4500 = ANGLE_4_4500 ;
+int  ANGLE_4750 = ANGLE_4_4750 ;
+int  ANGLE_5000 = ANGLE_4_5000 ;
+int  ANGLE_5250 = ANGLE_4_5250 ;
+int  ANGLE_5500 = ANGLE_4_5500 ;
+int  ANGLE_5750 = ANGLE_4_5750 ;
+int  ANGLE_6000 = ANGLE_4_6000 ;
+int  ANGLE_6250 = ANGLE_4_6250 ;
+int  ANGLE_6500 = ANGLE_4_6500 ;
+int  ANGLE_6750 = ANGLE_4_6750 ;
+int  ANGLE_7000 = ANGLE_4_7000;
 unsigned long testtime;
 unsigned long loadtime;         // Переменная для расчёта времени впуска.
 unsigned long oldtime;         // Переменная для расчёта RPM.
@@ -249,7 +249,7 @@ bool loadRead = false; // флаг имитации шторки
 // Назначаем переменные границ изменения показаний МАР, устанавливаем их на старте програмы инвертно для корректной работы самоподстройки по показаниям
 word MapMax = 900; // максимальное значение МАР
 word MapMin = 900;  // минимальное значене МАР
-int MapOld;   //Предыдущее значение МАР
+word MapOld;   //Предыдущее значение МАР
 unsigned long MapTime; // переменная времени считывания МАР
 bool MapReadFlag = false; // переменная  считывания МАР
 void setup()
